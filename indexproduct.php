@@ -19,7 +19,7 @@ $pdo = new PDO("pgsql:" . sprintf(
     ltrim($db["path"], "/")
 ));
 //you sql query
-$sql = "SELECT studentname, course FROM registercourse";
+$sql = "SELECT Name, Price FROM Products";
 $stmt = $pdo -> prepare ($sql);
 //execure  the query on the server and return the result
 $stmt -> setFetchMode(PDO::PETCH_ASSOC);
@@ -31,7 +31,7 @@ $resultSet = $stmt -> fetchAll();
 <?php
 foreach ($result as $row) {
 	echo "<li>".
-	$row["studentname"].'--'.$row["course"]."</li>";
+	$row["Name"].'--'.$row["Price"]."</li>";
 }
 ?>
 </ul>
