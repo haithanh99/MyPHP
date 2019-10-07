@@ -29,7 +29,7 @@ $resultSet = $stmt -> fetchAll();
 ?>
 <ul>
 <?php
-foreach ($result as $row) {
+foreach ($resultSet as $row) {
 	echo "<li>".
 	$row["Name"].'--'.$row["Price"]."</li>";
 }
