@@ -22,7 +22,7 @@
 		</tr>
 		<tr>
 			<td> Date of Birth</td>
-			<td><input type="Data" name="dob"/></td>
+			<td><input type="Date" name="dob"/></td>
 		</tr>
 		<tr>
 			<td>Gender</td>
