@@ -34,7 +34,7 @@ $pdo = new PDO("pgsql:" . sprintf(
     ltrim($db["path"], "/")
 ));
 	//your sql query
-	$sql = "SELECT * FROM Product";
+	$sql = "SELECT * FROM Products";
 	$stmt = $pdo->prepare($sql);
 	//execute the query on the server and return the result set
 	$stmt->setFetchMode(PDO::FETCH_ASSOC);
