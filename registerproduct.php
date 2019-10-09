@@ -16,7 +16,7 @@
 		</tr>
 		<tr>
 			<td></td>
-			<td><input type="submit" name="Register"></td>
+			<td><input type="submit" name="RegisterProduct"></td>
 		</tr>
 	</table>
 </form>

@@ -4,9 +4,10 @@
 	<title>Processing</title>
 </head>
 <body>
-	<?php
+	<?php 
 		$name = $_POST["txtName"];
 		$price = $_POST["txtPrice"];	
+		
 		echo $name;
 		echo $price;
 		
@@ -23,18 +24,15 @@
 	   $data = [
 		    'name' => $name,
 		    'price' => $price,
-		$stmt =  $pdo->prepare("INSERT INTO Products(name, price) VALUES (:name,:price)");	
+		    
+		];
+		$stmt =  $pdo->prepare("INSERT INTO products(name, price) VALUES (:name,:price)");	
 		$stmt->execute($data);
-	];
- ?>
+	 ?>
 	 <h2>Thank you <?php echo $name?>  for registering 
 	 		<?php echo $price?>
 	 </h2>
-	 <ul>
-	 	<li><?php echo $name?></li>
-	 	<li><?php echo $price?></li>
-
-	 </ul>
-	 <a href="indexproduct.php">indexproduct</a>
+	
+	 <a href="indexproduct.php">Index</a>
 </body>
 </html>
