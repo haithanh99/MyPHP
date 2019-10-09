@@ -4,7 +4,7 @@
 	<title>Processing</title>
 </head>
 <body>
-	<?php 
+	<?php
 		$name = $_POST["txtName"];
 		$price = $_POST["txtPrice"];	
 		echo $name;
@@ -25,7 +25,8 @@
 		    'price' => $price,
 		$stmt =  $pdo->prepare("INSERT INTO Products(name, price) VALUES (:name,:price)");	
 		$stmt->execute($data);
-	 ?>
+	];
+ ?>
 	 <h2>Thank you <?php echo $name?>  for registering 
 	 		<?php echo $price?>
 	 </h2>
