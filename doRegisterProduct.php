@@ -8,6 +8,7 @@
 		$name = $_POST["txtName"];
 		$price = $_POST["txtPrice"];	
 		echo $name;
+		echo $price;
 		
 		//Refere to database 
 	   $db = parse_url(getenv("DATABASE_URL"));
@@ -22,7 +23,7 @@
 	   $data = [
 		    'name' => $name,
 		    'price' => $price,
-		$stmt =  $pdo->prepare("INSERT INTO products(name, price) VALUES (:name,:price)");	
+		$stmt =  $pdo->prepare("INSERT INTO Products(name, price) VALUES (:name,:price)");	
 		$stmt->execute($data);
 	 ?>
 	 <h2>Thank you <?php echo $name?>  for registering 
@@ -33,6 +34,6 @@
 	 	<li><?php echo $price?></li>
 
 	 </ul>
-	 <a href="indexproduct.php">Index</a>
+	 <a href="indexproduct.php">indexproduct</a>
 </body>
 </html>
