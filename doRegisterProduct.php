@@ -21,7 +21,7 @@
 	   ));
 	   $data = [
 		    'name' => $name,
-		    'price' => $course,
+		    'price' => $price,
 		$stmt =  $pdo->prepare("INSERT INTO products(name, price) VALUES (:name,:price)");	
 		$stmt->execute($data);
 	 ?>
