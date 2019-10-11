@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML with JS</title>
+	<style type="text/css">
+		.error{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<h2> Enter your information!</h2>
+	<table>
+		<tr>
+			<td>Name</td>
+			<td> <input type="text" id="name"></td>
+		</tr>
+		<tr>
+			<td>Country</td>
+			<td>
+				<select name="country"> 
+				<option value="Viet"> Viet</option>
+				<option value="Malaysia">Malaysia</option>
+				<option value="UEA">UEA</option>
+				</select>
+			</td>			
+		</tr>
+		<tr>
+			<td>Gender</td>
+			<td><input type="radio" name="" id="gender">Male
+				<input type="radio" name="" id="gender">Female
+			</td>
+		</tr>
+		<tr>
+			<td>Age</td>
+			<td><input type="number" name="" id="age"></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<input type="button" onclick="validate()" value="Ok">
+			</td>
+		
+		</tr>
+	</table>
+	<ul id="errorlist" class="error">
+		
+	</ul>
+	<script>
+		function validate(){
+			var name = document.getElementById("name").value;
+			var gender = document.getElementById("gender");
+			var age = document.getElementById("age").value;
+			while (errorlist.hasChildNodes()) {
+				errorlist.removeChild(errorlist.childNodes[0]);
+			}
+			document.getElementById("errorlist").removeall
+			if (name.length <6)
+			{
+				// alert("Name must have at least 5 characters")
+				var node = document.createElement("li");
+				var textnode = document.createTextNode("Name must have at least 5 characters");
+				node.appendChild(textnode);
+				document.getElementById("errorlist").appendChild(node);
+			}
+			if (!gender.checked)
+			{
+			// alert("You must select gender!")
+				var node = document.createElement("li")
+				var textnode = document.createTextNode("You must select gender!");
+				node.appendChild(textnode);
+				document.getElementById("errorlist").appendChild(node);
+			}
+			if (isNaN(age) || age <21)
+			{
+			// alert("You must select gender!")
+				var node = document.createElement("li")
+				var textnode = document.createTextNode("You must push your age in the blank!");
+				node.appendChild(textnode);
+				document.getElementById("errorlist").appendChild(node);
+			}
+		}
+
+	</script>
+</body>
+</html>
