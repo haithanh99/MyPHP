@@ -6,12 +6,18 @@
 	<style type="text/css">
 		.error{
 			color: red;
+			margin: 0.5;
+
+		}
+		#outputDiv{
+			display: none;
 		}
 	</style>
 </head>
 <body>
-	<h2> Enter your information!</h2>
-	<table>
+	<div id="inputDiv">
+		<h2> Enter your information!</h2>
+		<table>
 		<tr>
 			<td>Name</td>
 			<td> <input type="text" id="name"></td>
@@ -28,8 +34,8 @@
 		</tr>
 		<tr>
 			<td>Gender</td>
-			<td><input type="radio" name="" id="gender">Male
-				<input type="radio" name="" id="gender">Female
+			<td><input type="radio" name="gender" id="genderMale" value="Male">Male
+				<input type="radio" name="gender" id="genderFemale" value="Female">Female
 			</td>
 		</tr>
 		<tr>
@@ -38,7 +44,7 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<input type="button" onclick="validate()" value="Ok">
+				<input type="button" onclick="userSubmit()" value="Ok">
 			</td>
 		
 		</tr>
@@ -46,11 +52,57 @@
 	<ul id="errorlist" class="error">
 		
 	</ul>
+	</div>
+	
+	<div id="outputDiv">
+		<h2>Thank you for your efforts</h2>
+		<ul id="inputList"></ul>
+	</div>
 	<script>
-		function validate(){
+		function userSubmit(){
+			//if no error , it will show the comfirmation
+			if(validate()){
+				confirmation();
+			};
+		}
+		function confirmation(){
+			var isValid =true;
 			var name = document.getElementById("name").value;
-			var gender = document.getElementById("gender");
+			var genderMale = document.getElementById("genderMale");
+			var genderFemale = document.getElementById("genderFemale");
 			var age = document.getElementById("age").value;
+			var inputDiv = document.getElementById("inputDiv");
+			var outputDiv = document.getElementById("outputDiv");
+			inputDiv.style.display = 'none';
+			outputDiv.style.display ='block';
+
+			var inputList = document.getElementById("inputList");
+
+			 var node = document.createElement("li");
+			 var textnode = document.createTextNode("your name" + name);
+			 node.appendChild(textnode);
+			 inputList.appendChild(node);
+
+			 if(document.getElementById('genderMale'.checked)
+			 	gender = "Male";
+			 	else {
+			 		gender = "Female";
+			 	}
+
+			 node = document.createElement("li");
+			 var textnode = document.createTextNode("your gender" + gender.value);
+			 
+			 node.appendChild(textnode);
+			 inputList.appendChild(node);
+
+		};
+		function validate(){
+			var isValid =true;
+			var name = document.getElementById("name").value;
+			var genderMale = document.getElementById("genderMale");
+			var genderFemale = document.getElementById("genderFemale");
+			var age = document.getElementById("age").value;
+			var errorlist = document.getElementById("errorlist");
 			while (errorlist.hasChildNodes()) {
 				errorlist.removeChild(errorlist.childNodes[0]);
 			}
@@ -61,15 +113,17 @@
 				var node = document.createElement("li");
 				var textnode = document.createTextNode("Name must have at least 5 characters");
 				node.appendChild(textnode);
-				document.getElementById("errorlist").appendChild(node);
+				errorlist.appendChild(node);
+				isValid = false;
 			}
-			if (!gender.checked)
+			if (!genderMale.checked && !genderFemale.checked)
 			{
 			// alert("You must select gender!")
 				var node = document.createElement("li")
 				var textnode = document.createTextNode("You must select gender!");
 				node.appendChild(textnode);
-				document.getElementById("errorlist").appendChild(node);
+				errorlist.appendChild(node);
+				isValid = false;
 			}
 			if (isNaN(age) || age <21)
 			{
@@ -77,8 +131,10 @@
 				var node = document.createElement("li")
 				var textnode = document.createTextNode("You must push your age in the blank!");
 				node.appendChild(textnode);
-				document.getElementById("errorlist").appendChild(node);
+				errorlist.appendChild(node);
+				isValid = false;
 			}
+			return isValid;
 		}
 
 	</script>
