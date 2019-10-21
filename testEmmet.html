@@ -34,8 +34,8 @@
 		</tr>
 		<tr>
 			<td>Gender</td>
-			<td><input type="radio" name="gender" id="genderMale" value="Male">Male
-				<input type="radio" name="gender" id="genderFemale" value="Female">Female
+			<td><input type="radio" name="gender" id="genderMale" >Male
+				<input type="radio" name="gender" id="genderFemale" >Female
 			</td>
 		</tr>
 		<tr>
@@ -68,8 +68,7 @@
 		function confirmation(){
 			var isValid =true;
 			var name = document.getElementById("name").value;
-			var genderMale = document.getElementById("genderMale");
-			var genderFemale = document.getElementById("genderFemale");
+			
 			var age = document.getElementById("age").value;
 			var inputDiv = document.getElementById("inputDiv");
 			var outputDiv = document.getElementById("outputDiv");
@@ -83,14 +82,14 @@
 			 node.appendChild(textnode);
 			 inputList.appendChild(node);
 
-			 if(document.getElementById('genderMale'.checked)
+			 if(document.getElementById('genderMale').checked)
 			 	gender = "Male";
 			 	else {
 			 		gender = "Female";
 			 	}
 
 			 node = document.createElement("li");
-			 var textnode = document.createTextNode("your gender" + gender.value);
+			 var textnode = document.createTextNode("your gender" + gender);
 			 
 			 node.appendChild(textnode);
 			 inputList.appendChild(node);

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Submit assignment</title>
+	
+</head>
+<body>
+	<div id="inputDiv">
+		<h2> To do List</h2>
+		<table>
+			<tr>
+				<td>Do</td>
+				<td> <input type="text" id="assignment"></td>
+				<td colspan="2"> <input type="button" onclick="userSubmit()" value="Add"></td>
+			</tr>
+			
+		</table>
+		
+	</div>
+	<div id="outputDiv">
+		
+		<ol id="inputList" ></ol> 
+		<ol id="errorlist"></ol>
+	</div>
+	
+	<script >
+		function userSubmit(){
+		
+			if(validate()){
+				confirmation();
+			};
+			
+		}
+		function confirmation(){
+			var isValid =true;
+			
+			var assignment = document.getElementById("assignment").value;
+
+			var inputList = document.getElementById("inputList");
+
+			 var node = document.createElement("li");
+			 var textnode = document.createTextNode("" + assignment);
+			 node.appendChild(textnode);
+			 inputList.appendChild(node);
+
+		
+	
+		};
+		function validate(){
+			isValid = true;
+			var assignment = document.getElementById("assignment").value;
+			
+			var errorlist = document.getElementById("errorlist");
+			while (errorlist.hasChildNodes()) {
+				errorlist.removeChild(errorlist.childNodes[0]);
+			}
+			document.getElementById("errorlist").removeall
+			if (assignment.length <6)
+			{
+				// alert("Name must have at least 5 characters")
+				var node = document.createElement("li");
+				var textnode = document.createTextNode("Name must have at least 5 characters");
+				node.appendChild(textnode);
+				errorlist.appendChild(node);
+				isValid = false;
+				
+			}
+			return isValid;
+		}
+
+	</script>
+	
+</body>
+</html>
