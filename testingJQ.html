@@ -25,7 +25,8 @@
 				var task = $("#task").val();
 				if(validate())
 				{
-					$("#todoList").append('<li>' + task + '</li>')
+					var remove = '<a href="#task" onclick="removeTask(this)">Remove</a>';
+					$("#todoList").append('<li>' + task + "--" + remove + '</li>')
 					//go back to normal border
 					$("#task").css('border','');
 				}
@@ -33,7 +34,10 @@
 					
 			});
 		});
-
+		function removeTask(e){
+			$(e).closest('li').remove();
+			
+		}
 		function validate(){
 			var isValid = true;
 			var task = $("#task").val();

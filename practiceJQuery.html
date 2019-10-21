@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	 <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+  <script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+  integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+  crossorigin="anonymous"></script>
+	<title>Practice JQuery</title>
+</head>
+<body>
+	<table>
+		<tr>
+			<td>Name</td>
+			<td> <input type="text" id="name"></td>
+		</tr>
+		<tr>
+			<td>Country</td>
+			<td>
+				<select id="country"> 
+				<option value="USA"> USA</option>
+				<option value="Philipines">Philipines</option>
+				<option value="viet">Viet Nam</option>
+				</select>
+			</td>			
+		</tr>
+		<tr>
+			<td colspan="2">
+				<input type="button" onclick="" value="Ok" id="btnOk">
+			</td>
+		
+		</tr>
+	</table>
+</br>
+	<table id="todoList" border="1">
+		 <tr style="text-align: center;">
+      <th id="name">Name</th>
+      <th id="country">Country</th>
+     
+      </tr>
+	</table>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			//register the click event of the btnButton
+			$("#btnOk").click(function(event) {
+				var name = $("#name").val();
+				var country= $("#country").val();
+			if (validate())
+				{
+				
+					$('#todoList').append('<tr>'+'<td>' + name + '</td>' + '<td>' + country + '</td>' + '</tr>');
+					//go back to normal border
+					$("#name").css('border','');
+				}
+			});
+		});
+		function validate()
+		{
+			var isValid = true;
+			var task = $("#name").val();
+			var country = $("#country").val();
+			
+			return isValid;
+
+		}
+	</script>
+</body>
+</html>
