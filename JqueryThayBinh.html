@@ -24,11 +24,15 @@
 	<br/>
 	<input type="button" id="btnRegister" value="Register">
 	<br/>
+	Name to search
+	<input type="txe" name="" id="nameSearch">
+	<input type="button" name="" value="Search" id="btnSearch">
 	<table width="300px" id="userList" border="1px">
 		<thead>
 		<tr>
 			<th>Name</th>
 			<th>Country</th>
+			<th>Remove</th>
 		</tr>
 		</thead>
 		
@@ -37,19 +41,55 @@
 		</tbody>
 	</table>
 <script type="text/javascript">
+	//nameList store all names which have been entered
+	var nameList = [];
 	$(document).ready(function() {
 		$("#btnRegister").click(function(event) {
 			var name = $("#name").val();
 			var country = $("#country").val();
+			var remove = '<a href="#name" onclick="removeTask(this)">Remove</a>';
 			var row = "<tr>" +
 			               "<td>" + name +"</td>" +
 			               "<td>" + country +"</td>" +
+			               "<td>" + remove +"</td>" +
 			               "</tr>";
 			$("#userList tbody").append(row);
+			nameList.push(name);//add new name to the list
+			nameList.closest(remove);
 
 		});
+		// remove
+		function removeTask(e)
+		{
+			$(e).closest('tr').remove();
+		}
 		
+
+		//perform search
+		$("#btnSearch").click(function(event) {
+			var name = $("#nameSearch").val();
+			var found = false;
+			for (var i =0; i<nameList.length; i++)
+			{
+				if (nameList[i] == name)
+				{
+					found = true;
+					break;
+				}
+			}
+			if(found){
+				alert("Found: " + name);
+			}
+			else
+			{
+				alert("Not found: " + name);
+			}
+		});
 	});
+	function removeTask(e)
+		{
+			$(e).closest('tr').remove();
+		}
 </script>
 </body>
 </html>
