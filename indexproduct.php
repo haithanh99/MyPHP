@@ -46,7 +46,7 @@ $pdo = new PDO("pgsql:" . sprintf(
 	<?php
 		foreach ($resultSet as $row) {
 			echo "<li>" .
-				$row["productID"] . '--'. $row["name"] . '--'. $row["price"]
+				$row["productID"] . '--'. $row["name"] . '--'. $row["price"] . '--'. $row["Image_link"]
 			. "</li>";
 		}
 	?>
