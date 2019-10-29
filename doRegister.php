@@ -6,13 +6,12 @@
 <body>
 	<?php 
 		$name = $_POST["txtName"];
-		$course = $_POST["cbCourse"];	
 		$birthday = $_POST["dob"];
 		$gender = $_POST["gender"];
-		$fav_book =$_POST["book"];
-		$fav_car = $_POST["car"];
-		$fav = $fav_book . "," . $fav_car;
+		$phone = $_POST["txtPhone"]
+
 		echo $name;
+		echo $phone;
 		
 		//Refere to database 
 	   $db = parse_url(getenv("DATABASE_URL"));
@@ -25,23 +24,22 @@
 	        ltrim($db["path"], "/")
 	   ));
 	   $data = [
-		    'name' => $name,
-		    'course' => $course,
+		    'name' => $name
 		    'dob' => $birthday,
 		    'gender' => $gender,
-		    'fav' => $fav
+		    'phone' => $phone
 		];
-		$stmt =  $pdo->prepare("INSERT INTO registercourse(studentname, course, dob,gender,fav) VALUES (:name,:course,:dob,:gender,:fav)");	
+		$stmt =  $pdo->prepare("INSERT INTO registercourse(name,dob,gender,phone) VALUES (:name,:dob,:gender,:phone)");	
 		$stmt->execute($data);
 	 ?>
 	 <h2>Thank you <?php echo $name?>  for registering 
-	 		<?php echo $course?>
+	 		
 	 </h2>
 	 <ul>
 	 	<li><?php echo $birthday?></li>
 	 	<li><?php echo $gender?></li>
-	 	<li><?php echo $fav_book?></li>
-	 	<li><?php echo $fav_car?></li>
+	 	<li><?php echo $phone?></li>
+	 	
 	 </ul>
 	 <a href="index.php">Index</a>
 </body>
